@@ -24,7 +24,7 @@ room number: numero de cuarto del hotel.
 Tabla de habitaciones
 
 id: Identificador único del producto.
-nombre: Nombre del producto.
+nombre: Nombre del cuarto.
 
 Uso
 
