@@ -1,10 +1,12 @@
 Projecto Final comp3400
 
 Descripción
-Aquí proporciona una descripción más detallada de lo que hace la aplicación y su propósito.
+
+El projecto se dividio en 3. Jadiel el frontend, Kenneth backend y Eliezer el database.
+para que se conectara se necesiaba que mariadb se conectara con flask y despues con el frontend pero tuvimos problemas con mariadb y flask y no se pudo
+conectar. 
 
 Tecnologías Utilizadas
-Enumera las tecnologías principales que se utilizaron para desarrollar la aplicación. Por ejemplo:
 
 HTML
 CSS
@@ -13,12 +15,14 @@ Estructura de la Base de Datos
 mariadb
 
 Tabla de Clientes
+
 id: Identificador único del usuario.
 nombre: Nombre del usuario.
 Contacto: Dirección de correo electrónico del usuario o numero de celular.
 room number: numero de cuarto del hotel.
 
 Tabla de habitaciones
+
 id: Identificador único del producto.
 nombre: Nombre del producto.
 email: Precio del producto.
