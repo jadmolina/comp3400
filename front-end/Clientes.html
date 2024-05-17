@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Resevation</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- DataTables CSS -->
+  <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>Hotel Reservation</h1>
+    <button id="agregarBtn" class="btn btn-primary mb-3">Agregar Reserva</button>
+    <input type="text" id="searchInput" class="form-control mb-3" placeholder="Search...">
+    <table id="tablaDatos" class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Room Number</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Contacto</th>
+          <th>Dirección</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí se llenará la tabla con datos -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal para ingresar datos -->
+  <div class="modal fade" id="agregarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Reserva</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="agregarForm">
+            <div class="form-group">
+              <label for="roomNumber">Room Number:</label>
+              <input type="text" class="form-control" id="roomNumber" required>
+            </div>
+            <div class="form-group">
+              <label for="nombre">Nombre:</label>
+              <input type="text" class="form-control" id="nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="apellido">Apellido:</label>
+              <input type="text" class="form-control" id="apellido" required>
+            </div>
+            <div class="form-group">
+              <label for="celular">Número de Celular:</label>
+              <input type="tel" class="form-control" id="celular" required>
+            </div>
+            <div class="form-group">
+              <label for="direccion">Dirección:</label>
+              <input type="text" class="form-control" id="direccion" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery y Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+  <!-- DataTables JS -->
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <!-- Script personalizado -->
+  <script>
+    $(document).ready(function() {
+      // Inicializar la tabla con DataTables
+      var table = $("#tablaDatos").DataTable();
+
+      // Función para abrir el modal al hacer clic en el botón
+      $("#agregarBtn").click(function() {
+        $("#agregarModal").modal("show");
+      });
+
+      // Función para agregar una nueva fila a la tabla
+      $("#agregarForm").submit(function(event) {
+        event.preventDefault(); // Evitar el envío del formulario
+
+        // Obtener los valores de los campos del formulario
+        var roomNumber = $("#roomNumber").val();
+        var nombre = $("#nombre").val();
+        var apellido = $("#apellido").val();
+        var celular = $("#celular").val();
+        var direccion = $("#direccion").val();
+
+        // Crear la nueva fila con los valores ingresados
+        var newRow = $("<tr>");
+        newRow.append("<td>" + Math.floor(Math.random() * 1000) + "</td>"); // Generar un ID aleatorio
+        newRow.append("<td>" + roomNumber + "</td>");
+        newRow.append("<td>" + nombre + "</td>");
+        newRow.append("<td>" + apellido + "</td>");
+        newRow.append("<td>" + celular + "</td>");
+        newRow.append("<td>" + direccion + "</td>");
+
+        // Agregar la nueva fila a la tabla
+        table.row.add(newRow).draw();
+
+        // Cerrar el modal
+        $("#agregarModal").modal("hide");
+
+        // Limpiar los campos del formulario
+        $("#agregarForm")[0].reset();
+      });
+
+      // Función para realizar la búsqueda
+      $("#searchInput").keyup(function() {
+        table.search($(this).val()).draw();
+      });
+    });
+  </script>
+</body>
+</html>
