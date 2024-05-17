@@ -25,7 +25,6 @@ Tabla de habitaciones
 
 id: Identificador único del producto.
 nombre: Nombre del producto.
-email: Precio del producto.
 
 Uso
 
